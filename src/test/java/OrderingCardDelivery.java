@@ -1,7 +1,6 @@
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -24,6 +23,7 @@ class OrderingCardDelivery {
         String planningDate = generateDate(3);
         open("http://localhost:9999/");
         $("[data-test-id = 'city'] input").setValue("Ростов-на-Дону");
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         $("[data-test-id='date'] input").setValue(planningDate);
         $("[data-test-id ='name'] input").setValue("Киркорова Алла-Виктория");
         $("[data-test-id='phone'] input").setValue("+79001234567");
